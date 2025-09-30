@@ -3,121 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meteostanice</title>
+    <title>Moje Meteostanice</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to top, #e0f7fa, #ffffff);
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
         }
 
         header {
             background-color: #00796b;
             color: white;
-            padding: 1rem 2rem;
-            width: 100%;
+            padding: 2rem 1rem;
             text-align: center;
         }
 
-        main {
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            border-radius: 8px;
+        nav {
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            padding: 0.5rem 0;
         }
 
-        h1 {
-            margin: 0;
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
         }
 
-        .data-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 2rem;
+            max-width: 900px;
+            margin: auto;
+            background-color: white;
             margin-top: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
         }
 
-        .data-card {
-            background: #f1f8e9;
-            padding: 1rem;
+        img {
+            max-width: 100%;
             border-radius: 6px;
-            text-align: center;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
-        }
-
-        .data-card h2 {
-            margin: 0.5rem 0;
         }
 
         footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #ddd;
             margin-top: 2rem;
-            font-size: 0.9rem;
-            color: #777;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Meteostanice</h1>
-        <p>Aktuální údaje z vaší stanice</p>
+        <h1>Moje Meteostanice</h1>
+        <p>Domácí měřící stanice pro sledování počasí</p>
     </header>
 
-    <main>
-        <div class="data-grid" id="weather-data">
-            <div class="data-card">
-                <h2>Teplota</h2>
-                <p id="temp">-- °C</p>
-            </div>
-            <div class="data-card">
-                <h2>Vlhkost</h2>
-                <p id="humidity">-- %</p>
-            </div>
-            <div class="data-card">
-                <h2>Tlak</h2>
-                <p id="pressure">-- hPa</p>
-            </div>
-            <div class="data-card">
-                <h2>Rychlost větru</h2>
-                <p id="wind">-- m/s</p>
-            </div>
-        </div>
-    </main>
+    <nav>
+        <a href="#uvod">Úvod</a>
+        <a href="#miri">Co měří</a>
+        <a href="#senzory">Senzory</a>
+        <a href="#foto">Fotky</a>
+        <a href="#kontakt">Kontakt</a>
+    </nav>
+
+    <section id="uvod">
+        <h2>Úvod</h2>
+        <p>Tato domácí meteostanice byla navržena pro sledování aktuálních povětrnostních podmínek v reálném čase. Umožňuje měřit teplotu, vlhkost, tlak, rychlost a směr větru či srážky. Je ideální pro hobby meteorology, školní projekty i technické nadšence.</p>
+    </section>
+
+    <section id="miri">
+        <h2>Co meteostanice měří</h2>
+        <ul>
+            <li>Teplota vzduchu</li>
+            <li>Relativní vlhkost</li>
+            <li>Atmosférický tlak</li>
+            <li>Rychlost a směr větru</li>
+            <li>Srážky (dešťový senzor)</li>
+            <li>UV záření a intenzita slunečního světla</li>
+        </ul>
+    </section>
+
+    <section id="senzory">
+        <h2>Použité senzory</h2>
+        <p>Pro měření různých veličin byly použity následující senzory:</p>
+        <ul>
+            <li><strong>BME280</strong> – Teplota, vlhkost, tlak</li>
+            <li><strong>DS18B20</strong> – Přesné měření teploty</li>
+            <li><strong>YL-83</strong> – Senzor deště</li>
+            <li><strong>ANEMOMETR</strong> – Měření rychlosti větru</li>
+            <li><strong>BH1750</strong> – Měření intenzity světla</li>
+        </ul>
+    </section>
+
+    <section id="foto">
+        <h2>Fotky meteostanice</h2>
+        <p>Ukázky zařízení v provozu:</p>
+        <img src="https://via.placeholder.com/800x400?text=Meteostanice+foto+1" alt="Foto meteostanice">
+        <br><br>
+        <img src="https://via.placeholder.com/800x400?text=Meteostanice+foto+2" alt="Foto meteostanice 2">
+    </section>
+
+    <section id="kontakt">
+        <h2>Kontakt</h2>
+        <p>Máte dotaz? Kontaktujte mě na e-mailu: <strong>moje@meteostanice.cz</strong></p>
+    </section>
 
     <footer>
-        &copy; 2025 Vaše Meteostanice | Poslední aktualizace: <span id="updated-time">--:--</span>
+        &copy; 2025 Moje Meteostanice
     </footer>
 
-    <script>
-        async function fetchWeatherData() {
-            try {
-                // Vyměň URL za API tvojí meteostanice
-                const response = await fetch("http://localhost:5000/api/weather");
-                const data = await response.json();
-
-                document.getElementById("temp").textContent = `${data.temperature} °C`;
-                document.getElementById("humidity").textContent = `${data.humidity} %`;
-                document.getElementById("pressure").textContent = `${data.pressure} hPa`;
-                document.getElementById("wind").textContent = `${data.wind_speed} m/s`;
-
-                const now = new Date();
-                document.getElementById("updated-time").textContent = now.toLocaleTimeString();
-            } catch (error) {
-                console.error("Chyba při načítání dat:", error);
-            }
-        }
-
-        // Načíst data při načtení stránky
-        fetchWeatherData();
-
-        // Obnovovat každých 60 sekund
-        setInterval(fetchWeatherData, 60000);
-    </script>
 </body>
 </html>
-
