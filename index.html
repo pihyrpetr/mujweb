@@ -1,10 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
-  <meta charset="UTF-8">
-  <title>Moje stránka</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meteostanice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to top, #e0f7fa, #ffffff);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            background-color: #00796b;
+            color: white;
+            padding: 1rem 2rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .data-card {
+            background: #f1f8e9;
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: center;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .data-card h2 {
+            margin: 0.5rem 0;
+        }
+
+        footer {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
 </head>
 <body>
-  <h1>Vítej na pihyr.fun!</h1>
+    <header>
+        <h1>Meteostanice</h1>
+        <p>Aktuální údaje z vaší stanice</p>
+    </header>
+
+    <main>
+        <div class="data-grid" id="weather-data">
+            <div class="data-card">
+                <h2>Teplota</h2>
+                <p id="temp">-- °C</p>
+            </div>
+            <div class="data-card">
+                <h2>Vlhkost</h2>
+                <p id="humidity">-- %</p>
+            </div>
+            <div class="data-card">
+                <h2>Tlak</h2>
+                <p id="pressure">-- hPa</p>
+            </div>
+            <div class="data-card">
+                <h2>Rychlost větru</h2>
+                <p id="wind">-- m/s</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2025 Vaše Meteostanice | Poslední aktualizace: <span id="updated-time">--:--</span>
+    </footer>
+
+    <script>
+        async function fetchWeatherData() {
+            try {
+                // Vyměň URL za API tvojí meteostanice
+                const response = await fetch("http://localhost:5000/api/weather");
+                const data = await response.json();
+
+                document.getElementById("temp").textContent = `${data.temperature} °C`;
+                document.getElementById("humidity").textContent = `${data.humidity} %`;
+                document.getElementById("pressure").textContent = `${data.pressure} hPa`;
+                document.getElementById("wind").textContent = `${data.wind_speed} m/s`;
+
+                const now = new Date();
+                document.getElementById("updated-time").textContent = now.toLocaleTimeString();
+            } catch (error) {
+                console.error("Chyba při načítání dat:", error);
+            }
+        }
+
+        // Načíst data při načtení stránky
+        fetchWeatherData();
+
+        // Obnovovat každých 60 sekund
+        setInterval(fetchWeatherData, 60000);
+    </script>
 </body>
 </html>
+
