@@ -12,6 +12,7 @@
             line-height: 1.6;
             background-color: #f4f4f4;
             color: #333;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         header {
@@ -26,6 +27,7 @@
             color: white;
             text-align: center;
             padding: 0.5rem 0;
+            position: relative;
         }
 
         nav a {
@@ -39,6 +41,19 @@
             text-decoration: underline;
         }
 
+        #toggle-darkmode {
+            position: absolute;
+            right: 1rem;
+            top: 0.5rem;
+            background-color: #00695c;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
         section {
             padding: 2rem;
             max-width: 900px;
@@ -47,6 +62,7 @@
             margin-top: 1rem;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            transition: background-color 0.3s, color 0.3s;
         }
 
         img {
@@ -59,6 +75,36 @@
             padding: 1rem;
             background-color: #ddd;
             margin-top: 2rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* DARK MODE STYLES */
+        .dark-mode body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .dark-mode section {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+
+        .dark-mode header {
+            background-color: #004d40;
+        }
+
+        .dark-mode nav {
+            background-color: #002f2f;
+        }
+
+        .dark-mode footer {
+            background-color: #2c2c2c;
+            color: #aaa;
+        }
+
+        .dark-mode #toggle-darkmode {
+            background-color: #333;
+            color: #fff;
         }
     </style>
 </head>
@@ -75,6 +121,7 @@
         <a href="#senzory">Senzory</a>
         <a href="#foto">Fotky</a>
         <a href="#kontakt">Kontakt</a>
+        <button id="toggle-darkmode">Tmavý režim</button>
     </nav>
 
     <section id="uvod">
@@ -122,6 +169,16 @@
     <footer>
         &copy; 2025 Moje Meteostanice
     </footer>
+
+    <script>
+        const toggleButton = document.getElementById('toggle-darkmode');
+        toggleButton.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark-mode');
+            toggleButton.textContent = document.documentElement.classList.contains('dark-mode') 
+                ? 'Světlý režim' 
+                : 'Tmavý režim';
+        });
+    </script>
 
 </body>
 </html>
