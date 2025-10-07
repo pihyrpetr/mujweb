@@ -146,3 +146,67 @@
             <li><strong>BME280</strong> – Teplota, vlhkost, tlak</li>
             <li><strong>DS18B20</strong> – Přesné měření teploty</li>
             <li><strong>YL-83</strong> – Senzor deště</li>
+            <li><strong>ANEMOMETR</strong> – Měření rychlosti větru</li>
+            <li><strong>BH1750</strong> – Měření intenzity světla</li>
+        </ul>
+    </section>
+
+    <section id="foto">
+        <h2>Fotky meteostanice</h2>
+        <p>Ukázky zařízení v provozu:</p>
+        <img src="https://www.satelitnishop.cz/files/prod_images/temp_big/meteostanice-ws3900-se-vzdalenym-pristupem--plus--vnejsi-senzor-7-v-1--2.jpg" alt="Foto meteostanice">
+        <br><br>
+        <img src="https://cdn.myshoptet.com/usr/www.epristroje.cz/user/shop/big/10361_digitalni-bezdratova-meteostanice-techno-line-ws1700--max--dosah-100-m--cerny-chrom.jpg?5fd3e0e8" alt="Foto meteostanice 2">
+    </section>
+
+    <section id="kontakt">
+        <h2>Kontakt</h2>
+        <p>Máte dotaz? Kontaktujte mě na e-mailu: <strong>petrpihyr@pihyr.fun</strong></p>
+    </section>
+
+    <footer>
+        &copy; 2025 Moje Meteostanice
+    </footer>
+
+    <script>
+        const toggleButton = document.getElementById('toggle-darkmode');
+
+        // Funkce pro přepnutí režimu
+        function toggleDarkMode(forcedMode = null) {
+            const isDark = document.documentElement.classList.contains('dark-mode');
+
+            if (forcedMode === 'dark' || (!isDark && forcedMode === null)) {
+                document.documentElement.classList.add('dark-mode');
+                toggleButton.textContent = '🌞'; // Slunce = světlý režim
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+                toggleButton.textContent = '🌙'; // Měsíc = tmavý režim
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Kliknutí na tlačítko
+        toggleButton.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.contains('dark-mode');
+            toggleDarkMode(isDark ? 'light' : 'dark');
+        });
+
+        // Načtení výchozího režimu při načtení stránky
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+
+            if (savedTheme === 'dark') {
+                toggleDarkMode('dark');
+            } else if (savedTheme === 'light') {
+                toggleDarkMode('light');
+            } else {
+                // Pokud není nic uloženo, zjistí se podle systému
+                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                toggleDarkMode(prefersDark ? 'dark' : 'light');
+            }
+        });
+    </script>
+
+</body>
+</html>
