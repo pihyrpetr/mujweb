@@ -3,210 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moje Meteostanice</title>
+    <title>Error 404 - Zmatená Postava</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --bg-color: #ffcccb; /* Světle červená */
+        }
+
+        body, html {
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            color: #333;
-            transition: background-color 0.3s, color 0.3s;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-color);
+            font-family: 'Arial Black', Gadget, sans-serif;
+            overflow: hidden;
         }
 
-        header {
-            background-color: #00796b;
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        nav {
-            background-color: #004d40;
-            color: white;
-            text-align: center;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        nav a {
-            color: white;
-            margin: 0 1rem;
+        /* --- Ikona YouTube v rohu --- */
+        .yt-icon {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            font-size: 50px;
+            color: #ff0000;
             text-decoration: none;
-            font-weight: bold;
+            transition: transform 0.3s ease;
+            z-index: 1000;
         }
 
-        nav a:hover {
-            text-decoration: underline;
+        .yt-icon:hover {
+            transform: scale(1.2);
         }
 
-        #toggle-darkmode {
-            position: absolute;
-            right: 1rem;
-            top: 0.5rem;
-            background-color: transparent;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        section {
-            padding: 2rem;
-            max-width: 900px;
-            margin: auto;
-            background-color: white;
-            margin-top: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        img {
-            max-width: 100%;
-            border-radius: 6px;
-        }
-
-        footer {
+        .container {
             text-align: center;
-            padding: 1rem;
-            background-color: #ddd;
-            margin-top: 2rem;
-            transition: background-color 0.3s, color 0.3s;
+            width: 90%;
         }
 
-        /* DARK MODE STYLY */
-        .dark-mode body {
-            background-color: #121212;
-            color: #e0e0e0;
+        /* --- Animace ERROR 404 (Glitch efekt) --- */
+        .error-code {
+            font-size: 8rem;
+            color: #ff0000;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+            text-shadow: 3px 3px 0px #000;
+            animation: glitch 0.4s infinite;
         }
 
-        .dark-mode section {
-            background-color: #1e1e1e;
-            color: #e0e0e0;
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(-5px, -5px); text-shadow: 3px 3px 0px blue; }
+            60% { transform: translate(5px, 5px); text-shadow: -3px -3px 0px yellow; }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
         }
 
-        .dark-mode header {
-            background-color: #004d40;
+        /* --- Velký černý text --- */
+        .welcome-text {
+            font-size: 4rem;
+            color: #000000;
+            margin-top: 10px;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out 0.5s forwards; /* Spustí se s mírným zpožděním */
         }
 
-        .dark-mode nav {
-            background-color: #002f2f;
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .dark-mode footer {
-            background-color: #2c2c2c;
-            color: #aaa;
+        /* --- Postava --- */
+        .character-box {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            margin: 0 auto;
         }
 
-        .dark-mode #toggle-darkmode {
-            color: #ffeb3b; /* žluté slunce */
+        .character {
+            width: 100%;
+            height: 100%;
+            /* Nezapomeňte mít soubor postava.png ve stejné složce */
+            background: url('postava.png') no-repeat center;
+            background-size: contain;
+            animation: lookAround 3s infinite ease-in-out;
+            transform-origin: bottom center;
         }
+
+        @keyframes lookAround {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            20% { transform: rotate(-10deg) translateX(-20px); }
+            40% { transform: rotate(10deg) translateX(20px); }
+            60% { transform: rotate(-5deg) scale(1.1); }
+            80% { transform: rotate(7deg) translateY(-15px); }
+        }
+
+        .shadow {
+            width: 250px;
+            height: 25px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 50%;
+            margin: -40px auto 0;
+            filter: blur(10px);
+        }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Moje Meteostanice</h1>
-        <p>Domácí měřící stanice pro sledování počasí</p>
-    </header>
+    <a href="https://www.youtube.com" target="_blank" class="yt-icon">
+        <i class="fab fa-youtube"></i>
+    </a>
 
-    <nav>
-        <a href="#uvod">Úvod</a>
-        <a href="#miri">Co měří</a>
-        <a href="#senzory">Senzory</a>
-        <a href="#foto">Fotky</a>
-        <a href="#kontakt">Kontakt</a>
-        <button id="toggle-darkmode" title="Přepnout režim">🌙</button>
-    </nav>
-
-    <section id="uvod">
-        <h2>Úvod</h2>
-        <p>Tato domácí meteostanice byla navržena pro sledování aktuálních povětrnostních podmínek v reálném čase. Umožňuje měřit teplotu, vlhkost, tlak, rychlost a směr větru či srážky. Je ideální pro hobby meteorology, školní projekty i technické nadšence.</p>
-    </section>
-
-    <section id="miri">
-        <h2>Co meteostanice měří</h2>
-        <ul>
-            <li>Teplota vzduchu</li>
-            <li>Relativní vlhkost</li>
-            <li>Atmosférický tlak</li>
-            <li>Rychlost a směr větru</li>
-            <li>Srážky (dešťový senzor)</li>
-            <li>UV záření a intenzita slunečního světla</li>
-        </ul>
-    </section>
-
-    <section id="senzory">
-        <h2>Použité senzory</h2>
-        <p>Pro měření různých veličin byly použity následující senzory:</p>
-        <ul>
-            <li><strong>BME280</strong> – Teplota, vlhkost, tlak</li>
-            <li><strong>DS18B20</strong> – Přesné měření teploty</li>
-            <li><strong>YL-83</strong> – Senzor deště</li>
-            <li><strong>ANEMOMETR</strong> – Měření rychlosti větru</li>
-            <li><strong>BH1750</strong> – Měření intenzity světla</li>
-        </ul>
-    </section>
-
-    <section id="foto">
-        <h2>Fotky meteostanice</h2>
-        <p>Ukázky zařízení v provozu:</p>
-        <img src="https://www.satelitnishop.cz/files/prod_images/temp_big/meteostanice-ws3900-se-vzdalenym-pristupem--plus--vnejsi-senzor-7-v-1--2.jpg" alt="Foto meteostanice">
-        <br><br>
-        <img src="https://cdn.myshoptet.com/usr/www.epristroje.cz/user/shop/big/10361_digitalni-bezdratova-meteostanice-techno-line-ws1700--max--dosah-100-m--cerny-chrom.jpg?5fd3e0e8" alt="Foto meteostanice 2">
-    </section>
-
-    <section id="kontakt">
-        <h2>Kontakt</h2>
-        <p>Máte dotaz? Kontaktujte mě na e-mailu: <strong>petrpihyr@pihyr.fun</strong></p>
-    </section>
-
-    <footer>
-        &copy; 2025 Moje Meteostanice
-    </footer>
-
-    <script>
-        const toggleButton = document.getElementById('toggle-darkmode');
-
-        // Funkce pro přepnutí režimu
-        function toggleDarkMode(forcedMode = null) {
-            const isDark = document.documentElement.classList.contains('dark-mode');
-
-            if (forcedMode === 'dark' || (!isDark && forcedMode === null)) {
-                document.documentElement.classList.add('dark-mode');
-                toggleButton.textContent = '🌞'; // Slunce = světlý režim
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.classList.remove('dark-mode');
-                toggleButton.textContent = '🌙'; // Měsíc = tmavý režim
-                localStorage.setItem('theme', 'light');
-            }
-        }
-
-        // Kliknutí na tlačítko
-        toggleButton.addEventListener('click', () => {
-            const isDark = document.documentElement.classList.contains('dark-mode');
-            toggleDarkMode(isDark ? 'light' : 'dark');
-        });
-
-        // Načtení výchozího režimu při načtení stránky
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme');
-
-            if (savedTheme === 'dark') {
-                toggleDarkMode('dark');
-            } else if (savedTheme === 'light') {
-                toggleDarkMode('light');
-            } else {
-                // Pokud není nic uloženo, zjistí se podle systému
-                const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                toggleDarkMode(prefersDark ? 'dark' : 'light');
-            }
-        });
-    </script>
+    <div class="container">
+        <h2 class="error-code">ERROR 404</h2>
+        
+        <h1 class="welcome-text">DNES UŽ SI VIDEO ASI NEPUSTÍŠ</h1>
+        
+        <div class="character-box">
+            <div class="character"></div>
+            <div class="shadow"></div>
+        </div>
+    </div>
 
 </body>
 </html>
